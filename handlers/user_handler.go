@@ -23,9 +23,17 @@ func (uh *UserHandler) Authenticate(c *fiber.Ctx) error {
 	if err != nil {
 		log.Println(err)
 	}
-	log.Println(result)
-	return nil
+	return c.JSON(result)
 }
 func (uh *UserHandler) Register(c *fiber.Ctx) error {
-	return nil
+	authen := new(models.Authen)
+	if err := c.BodyParser(authen); err != nil {
+		log.Println(err)
+	}
+	authenStore := stores.NewAuthenStore()
+	result, err := authenStore.Create(*authen)
+	if err != nil {
+		log.Println(err)
+	}
+	return c.JSON(result)
 }
