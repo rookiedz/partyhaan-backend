@@ -2,6 +2,8 @@ package mariadb
 
 import (
 	"database/sql"
+	"fmt"
+	"strings"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -25,4 +27,11 @@ func QueryConnect(dsn string) {
 }
 func ExecConnect(dsn string) {
 	dbExec = connect(dsn)
+}
+func GetCurrentDatetimeString() string {
+	datetime := time.Now()
+	return datetime.Format("2006-01-02 15:04:05")
+}
+func ArrayInt64ToString(arr []int64, delim string) string {
+	return strings.Trim(strings.Replace(fmt.Sprint(arr), " ", delim, -1), "[]")
 }

@@ -3,8 +3,8 @@ package models
 //Authen ...
 type Authen struct {
 	Base
-	Email    string
-	Password string
-	Salt     string
-	Hash     string
+	Email    string `json:"email"`
+	Password string `json:"password"`
+	Salt     string `json:"-"`
+	Hash     string `json:"-"`
 }

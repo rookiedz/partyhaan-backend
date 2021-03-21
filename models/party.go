@@ -3,9 +3,9 @@ package models
 //Party ...
 type Party struct {
 	Base
-	Cover   string
-	Name    string
-	Limited int64
-	Join    int64
-	Owner   int64
+	Cover string `json:"cover,omitempty"`
+	Name  string `json:"name,omitempty"`
+	Limit int64  `json:"limit,omitempty"`
+	Join  int64  `json:"join,omitempty"`
+	Owner int64  `json:"owner,omitempty"`
 }
