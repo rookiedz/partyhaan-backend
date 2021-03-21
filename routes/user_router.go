@@ -1,5 +1,15 @@
 package routes
 
-import fiber "github.com/gofiber/fiber/v2"
+import (
+	"partyhaan/backend/handlers"
 
-func InitialUserRouter(router fiber.Router) {}
+	fiber "github.com/gofiber/fiber/v2"
+)
+
+func UserRouter() *fiber.App {
+	router := fiber.New()
+	hdlUser := handlers.NewUser()
+	router.Post("/authenticate", hdlUser.Authenticate)
+	router.Post("/register", hdlUser.Register)
+	return router
+}

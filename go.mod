@@ -1,4 +1,4 @@
-module partyhann/backend
+module partyhaan/backend
 
 go 1.15
 

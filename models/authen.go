@@ -7,4 +7,5 @@ type Authen struct {
 	Password string `json:"password"`
 	Salt     string `json:"-"`
 	Hash     string `json:"-"`
+	UserID   int64  `json:"-"`
 }

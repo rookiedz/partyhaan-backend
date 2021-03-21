@@ -1,6 +1,6 @@
 package main
 
-import "partyhann/backend/httpd"
+import "partyhaan/backend/httpd"
 
 func main() {
 	httpd.Start()

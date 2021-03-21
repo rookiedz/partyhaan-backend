@@ -1,6 +1,6 @@
 package redis
 
-import "partyhann/backend/models"
+import "partyhaan/backend/models"
 
 //JoinRedis ...
 type JoinRedis struct{}

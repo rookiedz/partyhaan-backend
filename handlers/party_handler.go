@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"partyhann/backend/models"
+	"partyhaan/backend/models"
 
 	fiber "github.com/gofiber/fiber/v2"
 )

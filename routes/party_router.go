@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"partyhann/backend/handlers"
+	"partyhaan/backend/handlers"
 
 	fiber "github.com/gofiber/fiber/v2"
 )

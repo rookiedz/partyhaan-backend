@@ -1,11 +1,12 @@
 package httpd
 
 import (
-	"partyhann/backend/config"
-	"partyhann/backend/routes"
-	"partyhann/backend/stores/mariadb"
+	"partyhaan/backend/config"
+	"partyhaan/backend/routes"
+	"partyhaan/backend/stores/mariadb"
 
 	fiber "github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 )
@@ -18,9 +19,10 @@ func Start() {
 	app := fiber.New()
 	app.Use(recover.New())
 	app.Use(logger.New())
+	app.Use(cors.New())
 
 	api := app.Group("/api")
-	api.Mount("/", routes.AuthenRouter())
+	api.Mount("/users", routes.UserRouter())
 	api.Mount("/parties", routes.PartyRouter())
 
 	app.Listen(":8080")

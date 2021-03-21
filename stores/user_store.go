@@ -1,19 +1,34 @@
 package stores
 
-import "partyhann/backend/models"
+import (
+	"partyhaan/backend/models"
+	"partyhaan/backend/stores/mariadb"
+)
 
 //UserStore ...
-type UserStore struct{}
+type UserStore struct {
+}
 
+func NewUserStore() *UserStore {
+	return &UserStore{}
+}
 func (us *UserStore) Find(id int64) (models.User, error) {
-	return models.User{}, nil
+	mdbUesr := mariadb.NewUser()
+	return mdbUesr.Find(id)
+}
+func (us *UserStore) FindByParty(id int64, offset int64, limit int64) ([]models.User, error) {
+	mdbUser := mariadb.NewUser()
+	return mdbUser.FindByParty(id, offset, limit)
 }
 func (us *UserStore) Create(user models.User) (int64, error) {
-	return 0, nil
+	mdbUser := mariadb.NewUser()
+	return mdbUser.Create(user)
 }
 func (us *UserStore) Update(id int64, user models.User) error {
-	return nil
+	mdbUser := mariadb.NewUser()
+	return mdbUser.Update(id, user)
 }
 func (us *UserStore) Delete(id int64) error {
-	return nil
+	mdbUser := mariadb.NewUser()
+	return mdbUser.Delete(id)
 }
