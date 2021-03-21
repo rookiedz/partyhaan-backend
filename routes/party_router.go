@@ -3,15 +3,17 @@ package routes
 import (
 	"partyhann/backend/handlers"
 
-	fiber "github.com/gofiber/fiber/v2/"
+	fiber "github.com/gofiber/fiber/v2"
 )
 
-func InitialPartyRouter(router fiber.Router) {
+func PartyRouter() *fiber.App {
+	router := fiber.New()
 	hdlParty := handlers.NewParty()
-	router.Get("/parties/:id/users", hdlParty.Users)
-	router.Get("/parties/:id", hdlParty.Find)
-	router.Put("/parties/:id", hdlParty.Update)
-	router.Delete("/parties/:id", hdlParty.Delete)
-	router.Get("/parties", hdlParty.All)
-	router.Post("/parties", hdlParty.Crete)
+	router.Get("/:id/users", hdlParty.Users)
+	router.Get("/:id", hdlParty.Find)
+	router.Put("/:id", hdlParty.Update)
+	router.Delete("/:id", hdlParty.Delete)
+	router.Get("/", hdlParty.All)
+	router.Post("/", hdlParty.Crete)
+	return router
 }

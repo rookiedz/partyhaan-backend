@@ -1,6 +1,10 @@
 package handlers
 
-import fiber "github.com/gofiber/fiber/v2/"
+import (
+	"partyhann/backend/models"
+
+	fiber "github.com/gofiber/fiber/v2"
+)
 
 //PartyHandler ...
 type PartyHandler struct{}
@@ -9,7 +13,7 @@ func NewParty() *PartyHandler {
 	return &PartyHandler{}
 }
 func (ph *PartyHandler) All(c *fiber.Ctx) error {
-	return nil
+	return c.JSON(models.Party{})
 }
 func (ph *PartyHandler) Find(c *fiber.Ctx) error {
 	return nil

@@ -1,6 +1,6 @@
 package handlers
 
-import fiber "github.com/gofiber/fiber/v2/"
+import fiber "github.com/gofiber/fiber/v2"
 
 //AuthenHandler ...
 type AuthenHandler struct{}

@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "partyhann/backend/httpd"
 
+func main() {
+	httpd.Start()
 }

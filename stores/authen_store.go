@@ -1,6 +1,8 @@
 package stores
 
-import "partyhann/backend/models"
+import (
+	"partyhann/backend/models"
+)
 
 //AuthenStore ...
 type AuthenStore struct {
