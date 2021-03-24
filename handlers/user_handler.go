@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"errors"
 	"log"
 	"partyhaan/backend/models"
 	"partyhaan/backend/stores"
@@ -31,9 +32,17 @@ func (uh *UserHandler) Register(c *fiber.Ctx) error {
 		log.Println(err)
 	}
 	authenStore := stores.NewAuthenStore()
-	result, err := authenStore.Create(*authen)
+	a, err := authenStore.FindByEmail(authen.Email)
 	if err != nil {
 		log.Println(err)
 	}
-	return c.JSON(result)
+	authenEmpty := models.Authen{}
+	if a == authenEmpty {
+		return errors.New("ผู้ใช้งานนี้มีคนใช้แล้ว")
+	}
+	id, err := authenStore.Create(*authen)
+	if err != nil {
+		log.Println(err)
+	}
+	return c.JSON(id)
 }
